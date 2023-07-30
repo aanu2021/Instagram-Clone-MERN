@@ -1,5 +1,5 @@
 # Instagram-Clone-MERN
-Live Project Link :  https://vast-rose-nightingale-sari.cyclic.app/
+<h3><a href="https://vast-rose-nightingale-sari.cyclic.app/" target="_blank">Live Instagram Clone Project</a></h3>
 <h1> Instagram Clone Web Application </h1>
 <div> This clone has almost all the features that an actual Instagram must have possess.</div>
 <div>It has several features e.g <div>
