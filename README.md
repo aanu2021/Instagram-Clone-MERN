@@ -14,6 +14,8 @@
         <li> My Following Page </li>
         <li> Create Post Feature </li>
         <li> Delete My Post Feature </li>
+            <li> Upload Profile Picture </li>
+            <li> Remove Profile Picture </li>
     </ul>
   </div>
 </div>  
