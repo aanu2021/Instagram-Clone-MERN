@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import "../styles/Profile.css";
+import "../styles/Profile.css"; 
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 

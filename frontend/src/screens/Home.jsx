@@ -11,6 +11,9 @@ const Home = () => {
   const [show, setShow] = useState(false);
   const [item, setItem] = useState({});
 
+  let limit = 5;
+  let skip = 0;
+
   const defaultPicLink = 'https://cdn-icons-png.flaticon.com/128/3177/3177440.png';
 
   const notifyA = (message) => {
@@ -24,7 +27,19 @@ const Home = () => {
       navigate("/signup");
     }
 
-    fetch("/api/allposts", {
+    fetchPosts();
+
+    // window.addEventListener("scroll", handleScroll);
+
+    // return () => {
+    //   window.removeEventListener("scroll", handleScroll);
+    // }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+
+  const fetchPosts = () => {
+    fetch(`/api/allposts`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + localStorage.getItem("jwt"),
@@ -33,11 +48,17 @@ const Home = () => {
       .then((res) => res.json())
       .then((result) => {
         console.log(result.posts);
-        setData(result.posts);
+        setData((data)=>[...data,...result.posts]);
       })
       .catch((err) => console.log(err));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }
+
+  // const handleScroll = () => {
+  //   if (document.documentElement.clientHeight + window.pageYOffset >= document.documentElement.scrollHeight - 20) {
+  //     skip = skip + 5
+  //     fetchPosts()
+  //   }
+  // }
 
   const handleLikePost = (id) => {
     fetch("/api/like", {
@@ -171,7 +192,7 @@ const Home = () => {
                         </span>
                       )}
                       <p>{item.likes.length} Likes</p>
-                      <p>{item.body}</p>
+                      <p style={{ minHeight: "30px", lineHeight: 1.4 }}>{item.body}</p>
                       <p
                         style={{
                           fontWeight: "bold",
@@ -248,7 +269,7 @@ const Home = () => {
 
                     <div className="card-content">
                       <p>{item.likes.length} Likes</p>
-                      <p>{item.body}</p>
+                      <p style={{ minHeight: "30px", lineHeight: 1.4 }}>{item.body}</p>
                     </div>
 
                     <div className="add-comment">

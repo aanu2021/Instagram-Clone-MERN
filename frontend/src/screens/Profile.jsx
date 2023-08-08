@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react"; 
 import "../styles/Profile.css";
 import { useNavigate } from "react-router-dom";
 import PostDetails from "./PostDetails";

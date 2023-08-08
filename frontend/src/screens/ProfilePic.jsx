@@ -26,7 +26,7 @@ const ProfilePic = ({ changeProfile }) => {
             .catch((err) => console.log(err));
         console.log(url);
     };
-
+ 
     const postPic = () => {
         // saving post to mongodb
         fetch("/api/uploadProfilePic", {
@@ -42,7 +42,7 @@ const ProfilePic = ({ changeProfile }) => {
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);
-                changeProfile();
+                changeProfile(); 
                 window.location.reload();
             })
             .catch((err) => console.log(err));
