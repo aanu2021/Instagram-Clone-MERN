@@ -3,7 +3,7 @@ import "../styles/PostDetails.css";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
-const PostDetails = ({ item, toggleDetails }) => {
+const PostDetails = ({ item, toggleDetails }) => { 
   const notifyA = (message) => {
     toast.success(message);
   };
@@ -52,7 +52,7 @@ const PostDetails = ({ item, toggleDetails }) => {
                   alt="pic"
                 />
               </div>
-              <h3>{item.postedBy.username}</h3>
+              <h3>{item.postedBy.username}</h3> 
               <div className="deletePost" onClick={handleDelete}>
                 <span className="material-symbols-outlined">delete</span>
               </div>
@@ -81,7 +81,7 @@ const PostDetails = ({ item, toggleDetails }) => {
 
             <div className="card-content">
               <p>{item.likes.length} Likes</p>
-              <p>{item.body}</p>
+              <p style={{minHeight : "30px", lineHeight : 1.4}}>{item.body}</p>
             </div>
 
             <div className="add-comment">
@@ -89,15 +89,9 @@ const PostDetails = ({ item, toggleDetails }) => {
               <input
                 type="text"
                 placeholder="Add a comment..."
-                // value={comment}
-                // onChange={(e) => setComment(e.target.value)}
               />
               <button
                 className="comment"
-                // onClick={() => {
-                //   makeComment(comment, item._id);
-                //   toggleComment();
-                // }}
               >
                 Post
               </button>

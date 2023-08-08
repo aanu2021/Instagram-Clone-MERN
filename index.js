@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 5000;
 const mongodb = require("./db");
 
 require("./models/model");
-require("./models/post");
+require("./models/post"); 
 
 app.use(cors());
 app.use(express.json());

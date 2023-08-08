@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"; 
 import "../styles/Modal.css";
 import { RiCloseLine } from "react-icons/ri";
 import { useContext } from "react";

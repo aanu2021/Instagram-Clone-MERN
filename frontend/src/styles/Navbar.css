@@ -1,4 +1,4 @@
-img{
+img{ 
     width: 10%;
     object-fit: contain;
 }
@@ -47,4 +47,34 @@ a{
 
 .logoClass:hover{
     cursor: pointer;
+}
+
+.nav-mobile{
+    display : none;
+}
+
+@media screen and (max-width:800px){
+    #insta-logo{
+        display: none;
+    }
+    .nav-menu{
+        display: none;
+    }
+    .nav-mobile{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    .navbar{
+        width : 100%;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        background-color: #fff;
+        box-shadow: 0px -2px;
+    }
+    .navbar ul{
+        margin : 0;
+        padding : 10px 0px;
+    }
 }

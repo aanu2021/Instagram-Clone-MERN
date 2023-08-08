@@ -23,7 +23,7 @@ const CreatePost = () => {
 
   const inputEvent = (event) => {
     setContent(event.target.value);
-  };
+  }; 
 
   useEffect(() => {
     if (url) {

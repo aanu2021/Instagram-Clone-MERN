@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useState } from "react"; 
 import logo from "../images/logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/Signup_Login.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useContext } from "react";
-import { LoginContext } from "../context/LoginContext";
+import { LoginContext } from "../context/LoginContext"; 
 
 const Login = () => {
+  
   const [credentials, setCredentials] = useState({ email: "", password: "" });
  
   const inputEvent = (event) => {
@@ -43,7 +44,7 @@ const Login = () => {
       }); 
 
       const status = response.status;
-      const jsonData = await response.json();
+      const jsonData = await response.json(); 
       // console.log(jsonData);
       // console.log(status);
       // console.log(jsonData.token);

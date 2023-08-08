@@ -9,7 +9,7 @@ const FollowingPage = () => {
   const [data, setData] = useState([]);
   const [comment, setComment] = useState("");
   const [show, setShow] = useState(false);
-  const [item, setItem] = useState({});
+  const [item, setItem] = useState({}); 
   const defaultPicLink = 'https://cdn-icons-png.flaticon.com/128/3177/3177440.png';
 
   const notifyA = (message) => {

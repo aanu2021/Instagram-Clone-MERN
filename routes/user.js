@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/model");
 const Post = require("../models/post");
-const requireLogin = require("../middlewares/requireLogin");
+const requireLogin = require("../middlewares/requireLogin"); 
 
 router.put("/uploadProfilePic", requireLogin, async (req, res) => {
   try {
@@ -76,14 +76,14 @@ router.put("/unfollow", requireLogin, async (req, res) => {
   }
 });
 
-router.get("/user/:id", async (req, res) => {
+router.get("/user/:id", async (req, res) => { 
   try {
     const id = req.params.id;
     const currUser = await User.findOne({ _id: id }).select("-password");
     const userPosts = await Post.find({ postedBy: id }).populate(
       "postedBy",
       "_id name username"
-    );
+    ).populate("comments.postedBy", "_id name username");
     res.status(200).json({ user: currUser, posts: userPosts });
   } catch (error) {
     console.log(error);
