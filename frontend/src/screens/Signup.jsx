@@ -144,7 +144,7 @@ const Signup = () => {
               id="email"
               value={credentials.email}
               placeholder="Email   Id"
-              onChange={inputEvent}
+              onChange={inputEvent} 
             />
           </div>
           <div>

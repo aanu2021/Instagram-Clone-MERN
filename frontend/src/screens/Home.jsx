@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react"; 
 import "../styles/Home.css";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
@@ -35,7 +35,7 @@ const Home = () => {
     //   window.removeEventListener("scroll", handleScroll);
     // }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, []); 
 
 
   const fetchPosts = () => {

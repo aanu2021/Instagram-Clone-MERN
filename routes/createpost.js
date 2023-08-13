@@ -3,7 +3,7 @@ const app = express();
 const router = express.Router();
 const requireLogin = require("../middlewares/requireLogin");
 const Post = require("../models/post");
- 
+
 router.get("/myfollowing", requireLogin, async (req, res) => {
   try {
     const postData = await Post.find({
@@ -47,7 +47,7 @@ router.delete("/deletepost/:postId", requireLogin, async (req, res) => {
   }
 });
 
-router.put("/addcomment", requireLogin, async (req, res) => { 
+router.put("/addcomment", requireLogin, async (req, res) => {
   try {
     const currComment = {
       comment: req.body.text,
@@ -59,7 +59,9 @@ router.put("/addcomment", requireLogin, async (req, res) => {
         $push: { comments: currComment },
       },
       { new: true }
-    ).populate("comments.postedBy", "_id username Photo");
+    )
+      .populate("postedBy", "_id name username Photo")
+      .populate("comments.postedBy", "_id username Photo");
     res.status(200).json({ data: commentData });
   } catch (error) {
     console.log(error);
@@ -75,7 +77,8 @@ router.put("/like", requireLogin, async (req, res) => {
         $push: { likes: req.user._id },
       },
       { new: true }
-    ).populate("postedBy", "_id name username Photo");
+    ).populate("postedBy", "_id name username Photo")
+      .populate("comments.postedBy", "_id name username Photo");
     res.status(200).json({ data: data });
   } catch (error) {
     console.log(error);
@@ -91,7 +94,8 @@ router.put("/unlike", requireLogin, async (req, res) => {
         $pull: { likes: req.user._id },
       },
       { new: true }
-    ).populate("postedBy", "_id name username Photo");
+    ).populate("postedBy", "_id name username Photo")
+      .populate("comments.postedBy", "_id name username Photo");
     res.status(200).json({ data: data });
   } catch (error) {
     console.log(error);
@@ -144,7 +148,7 @@ router.post("/createpost", requireLogin, async (req, res) => {
       postedBy: req.user,
     });
     await post.save();
-    res.status(200).json({ success: true});
+    res.status(200).json({ success: true });
   } catch (error) {
     console.log(error);
     res.status(422).json({ error: "Something went wrong..." });
