@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
-const { ObjectId } = mongoose.Schema.Types;
+const { ObjectId } = mongoose.Schema.Types; 
 
-const postSchema = new mongoose.Schema({
+const postSchema = new mongoose.Schema({ 
   body: {
     type: String,
     required: true,

@@ -26,9 +26,6 @@ router.post(
       return res.status(432).json({ errors: errors.array() });
     }
 
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(req.body.password, salt);
-
     const { name, username, email, password } = req.body;
     if (!name || !username || !email || !password) {
       return res.status(422).json({ error: "Please add all the fields..." });
@@ -63,9 +60,9 @@ router.post(
 router.post(
   "/login",
   [
-    body("email", "Email is not properly formatted").isEmail(),
+   body("email", "Email is not properly formatted").isEmail(),
     body("password", "Password is too short, choose something strong").isLength(
-      { min: 5 }
+      { min: 5 } 
     ),
   ],
   async (req, res) => {
@@ -113,7 +110,7 @@ router.post(
   }
 );
 
-router.post("/googleLogin", async (req, res) => {
+router.post("/googleLogin", async (req, res) => { 
   try {
     const { email_verified, email, name, clientId, username, Photo } = req.body;
     if (email_verified) {

@@ -1,6 +1,6 @@
 require("dotenv").config(); 
 const User = require("../models/model");
-const jwt = require("jsonwebtoken");
+const jwt = require("jsonwebtoken"); 
 const jwtSecret = process.env.SECRET_KEY;
 
 module.exports = async (req, res, next) => {
