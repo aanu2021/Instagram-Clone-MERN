@@ -119,8 +119,6 @@ router.get("/myposts", requireLogin, async (req, res) => {
 
 router.get("/allposts", requireLogin, async (req, res) => {
   try {
-    // let limit = req.query.limit;
-    // let skip = req.query.skip;
     const posts = await Post.find({})
       .populate("postedBy", "_id username Photo")
       .populate("comments.postedBy", "_id username Photo")
