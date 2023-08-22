@@ -11,9 +11,6 @@ const Home = () => {
   const [show, setShow] = useState(false);
   const [item, setItem] = useState({});
 
-  let limit = 5;
-  let skip = 0;
-
   const defaultPicLink = 'https://cdn-icons-png.flaticon.com/128/3177/3177440.png';
 
   const notifyA = (message) => {
@@ -28,12 +25,6 @@ const Home = () => {
     }
 
     fetchPosts();
-
-    // window.addEventListener("scroll", handleScroll);
-
-    // return () => {
-    //   window.removeEventListener("scroll", handleScroll);
-    // }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); 
 
@@ -52,13 +43,6 @@ const Home = () => {
       })
       .catch((err) => console.log(err));
   }
-
-  // const handleScroll = () => {
-  //   if (document.documentElement.clientHeight + window.pageYOffset >= document.documentElement.scrollHeight - 20) {
-  //     skip = skip + 5
-  //     fetchPosts()
-  //   }
-  // }
 
   const handleLikePost = (id) => {
     fetch("/api/like", {
