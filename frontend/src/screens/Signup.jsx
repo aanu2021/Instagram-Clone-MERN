@@ -81,54 +81,6 @@ const Signup = () => {
     }
   };
 
-  const continueWithGoogle = async (credentialResponse) => {
-    try {
-      console.log(credentialResponse);
-      const jwtDetail = jwt_decode(credentialResponse.credential);
-      console.log(jwtDetail);
-      const response = await fetch("/api/googleLogin", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email_verified: jwtDetail.email_verified,
-          email: jwtDetail.email,
-          name: jwtDetail.name,
-          clientId: credentialResponse.clientId,
-          username: jwtDetail.name,
-          Photo: jwtDetail.picture
-        }),
-      });
-      const status = response.status;
-
-      const jsonData = await response.json();
-
-      if (status === 200) {
-        notifyA(`Welcome ${jsonData.username}`);
-        setUserLogin(true);
-        localStorage.setItem("jwt", jsonData.token);
-        localStorage.setItem("user", JSON.stringify(jsonData.user));
-        setTimeout(() => {
-          navigate("/");
-        }, 5000);
-      } else if (status === 432) {
-        notifyB(`${jsonData.errors[0].msg}`);
-        // alert(jsonData.errors[0].msg);
-      } else if (status === 422) {
-        notifyB(`${jsonData.error}`);
-        // alert(jsonData.error);
-      } else {
-        notifyB("Oops !!! enter valid credentials");
-        // alert("Enter Valid Credentials.....");
-      }
-    }
-    catch (error) {
-      console.log(error);
-      notifyB("Oops !!! enter valid credentials");
-    }
-  }
-
   return (
     <div className="signUp">
       <div className="form-container">
@@ -190,15 +142,6 @@ const Signup = () => {
             value="Sign Up"
             onClick={postData}
           />
-          {/* <hr/> */}
-          {/* <GoogleLogin
-            onSuccess={credentialResponse => {
-              continueWithGoogle(credentialResponse);
-            }}
-            onError={() => {
-              console.log('Login Failed');
-            }}
-          /> */}
         </div>
         <div className="form2">
           Already have an account ?
