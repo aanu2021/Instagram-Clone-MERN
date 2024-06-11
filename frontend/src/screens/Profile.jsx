@@ -11,7 +11,7 @@ const Profile = () => {
   const [user, setUser] = useState("");
   const [changePic, setChangePic] = useState(false);
   const navigate = useNavigate();
-  const BASE_URL = import.meta.BASE_URL;
+  const BASE_URL = process.env.BASE_URL;
 
   const defaultPicLink = 'https://cdn-icons-png.flaticon.com/128/3177/3177440.png';
 

@@ -10,7 +10,7 @@ const Home = () => {
   const [comment, setComment] = useState("");
   const [show, setShow] = useState(false);
   const [item, setItem] = useState({});
-  const BASE_URL = import.meta.BASE_URL;
+  const BASE_URL = process.env.BASE_URL;
 
   const defaultPicLink = 'https://cdn-icons-png.flaticon.com/128/3177/3177440.png';
 

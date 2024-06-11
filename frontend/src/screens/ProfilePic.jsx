@@ -7,7 +7,7 @@ const ProfilePic = ({ changeProfile }) => {
     const hiddenFileInput = useRef(null);
     const [image, setImage] = useState();
     const [url, setUrl] = useState(null);
-    const BASE_URL = import.meta.BASE_URL;
+    const BASE_URL = process.env.BASE_URL;
 
     const handleClick = () => {
         hiddenFileInput.current.click();

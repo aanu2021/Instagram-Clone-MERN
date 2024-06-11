@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const PostDetails = ({ item, toggleDetails }) => { 
 
-  const BASE_URL = import.meta.BASE_URL;
+  const BASE_URL = process.env.BASE_URL;
 
   const notifyA = (message) => {
     toast.success(message);
