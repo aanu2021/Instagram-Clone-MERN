@@ -16,6 +16,7 @@ const Signup = () => {
     username: "",
     password: "",
   });
+  const BASE_URL = import.meta.BASE_URL;
 
   const notifyA = (str) => toast.success(str);
   const notifyB = (str) => toast.error(str);
@@ -41,7 +42,7 @@ const Signup = () => {
       );
     } else {
       try {
-        const response = await fetch("/api/signup", {
+        const response = await fetch(`${BASE_URL}/api/signup`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -86,7 +87,7 @@ const Signup = () => {
       console.log(credentialResponse);
       const jwtDetail = jwt_decode(credentialResponse.credential);
       console.log(jwtDetail);
-      const response = await fetch("/api/googleLogin", {
+      const response = await fetch(`${BASE_URL}/api/googleLogin`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

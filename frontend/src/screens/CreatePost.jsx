@@ -9,6 +9,7 @@ const CreatePost = () => {
   const [content, setContent] = useState("Enter a caption...");
   const [image, setImage] = useState();
   const [url, setUrl] = useState("");
+  const BASE_URL = import.meta.BASE_URL;
 
   const defaultPicLink = 'https://cdn-icons-png.flaticon.com/128/3177/3177440.png';
 
@@ -27,7 +28,7 @@ const CreatePost = () => {
 
   useEffect(() => {
     if (url) {
-      fetch("/api/createpost", {
+      fetch(`${BASE_URL}/api/createpost`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

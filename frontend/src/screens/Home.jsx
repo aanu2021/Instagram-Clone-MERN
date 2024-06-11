@@ -10,6 +10,7 @@ const Home = () => {
   const [comment, setComment] = useState("");
   const [show, setShow] = useState(false);
   const [item, setItem] = useState({});
+  const BASE_URL = import.meta.BASE_URL;
 
   let limit = 5;
   let skip = 0;
@@ -39,7 +40,7 @@ const Home = () => {
 
 
   const fetchPosts = () => {
-    fetch(`/api/allposts`, {
+    fetch(`${BASE_URL}/api/allposts`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + localStorage.getItem("jwt"),
@@ -61,7 +62,7 @@ const Home = () => {
   // }
 
   const handleLikePost = (id) => {
-    fetch("/api/like", {
+    fetch(`${BASE_URL}/api/like`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -86,7 +87,7 @@ const Home = () => {
   };
 
   const handleUnlikePost = (id) => {
-    fetch("/api/unlike", {
+    fetch(`${BASE_URL}/api/unlike`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -111,7 +112,7 @@ const Home = () => {
   };
 
   const makeComment = (element, id) => {
-    fetch("/api/addcomment", {
+    fetch(`${BASE_URL}/api/addcomment`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

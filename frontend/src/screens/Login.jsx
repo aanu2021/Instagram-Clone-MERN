@@ -10,7 +10,8 @@ import { LoginContext } from "../context/LoginContext";
 const Login = () => {
   
   const [credentials, setCredentials] = useState({ email: "", password: "" });
- 
+  const BASE_URL = import.meta.BASE_URL;
+
   const inputEvent = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -32,7 +33,7 @@ const Login = () => {
   const postData = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch("/api/login", {
+      const response = await fetch(`${BASE_URL}/api/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

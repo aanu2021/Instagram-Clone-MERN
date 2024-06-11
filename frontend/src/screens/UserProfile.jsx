@@ -10,9 +10,10 @@ const UserProfile = () => {
   const [isFollow, setIsFollow] = useState(true);
   const defaultPicLink = 'https://cdn-icons-png.flaticon.com/128/3177/3177440.png';
   const { id } = useParams();
-
+  const BASE_URL = import.meta.BASE_URL;
+  
   useEffect(() => {
-    fetch(`/api/user/${id}`, {
+    fetch(`${BASE_URL}/api/user/${id}`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + localStorage.getItem("jwt"),
@@ -39,7 +40,7 @@ const UserProfile = () => {
   }, [isFollow]);
 
   const handleFollow = (idd) => {
-    fetch("/api/follow", {
+    fetch(`${BASE_URL}/api/follow`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -58,7 +59,7 @@ const UserProfile = () => {
   };
 
   const handleUnFollow = (idd) => {
-    fetch("/api/unfollow", {
+    fetch(`${BASE_URL}/api/unfollow`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

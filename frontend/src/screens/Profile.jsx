@@ -11,11 +11,12 @@ const Profile = () => {
   const [user, setUser] = useState("");
   const [changePic, setChangePic] = useState(false);
   const navigate = useNavigate();
+  const BASE_URL = import.meta.BASE_URL;
 
   const defaultPicLink = 'https://cdn-icons-png.flaticon.com/128/3177/3177440.png';
 
   useEffect(() => {
-    fetch(`/api/user/${JSON.parse(localStorage.getItem("user"))._id}`, {
+    fetch(`${BASE_URL}/api/user/${JSON.parse(localStorage.getItem("user"))._id}`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + localStorage.getItem("jwt"),

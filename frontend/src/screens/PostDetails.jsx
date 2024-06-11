@@ -4,6 +4,9 @@ import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 const PostDetails = ({ item, toggleDetails }) => { 
+
+  const BASE_URL = import.meta.BASE_URL;
+
   const notifyA = (message) => {
     toast.success(message);
   };
@@ -14,7 +17,7 @@ const PostDetails = ({ item, toggleDetails }) => {
   const navigate = useNavigate();
 
   const handleDelete = () => {
-    fetch(`/api/deletepost/${item._id}`, {
+    fetch(`${BASE_URL}/api/deletepost/${item._id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

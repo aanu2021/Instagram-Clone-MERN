@@ -11,6 +11,7 @@ const FollowingPage = () => {
   const [show, setShow] = useState(false);
   const [item, setItem] = useState({}); 
   const defaultPicLink = 'https://cdn-icons-png.flaticon.com/128/3177/3177440.png';
+  const BASE_URL = import.meta.BASE_URL;
 
   const notifyA = (message) => {
     toast.success(message);
@@ -23,7 +24,7 @@ const FollowingPage = () => {
       navigate("/signup");
     }
 
-    fetch("/api/myfollowing", {
+    fetch(`${BASE_URL}/api/myfollowing`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + localStorage.getItem("jwt"),
@@ -39,7 +40,7 @@ const FollowingPage = () => {
   }, []);
 
   const handleLikePost = (id) => {
-    fetch("/api/like", {
+    fetch(`${BASE_URL}/api/like`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -64,7 +65,7 @@ const FollowingPage = () => {
   };
 
   const handleUnlikePost = (id) => {
-    fetch("/api/unlike", {
+    fetch(`${BASE_URL}/api/unlike`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -89,7 +90,7 @@ const FollowingPage = () => {
   };
 
   const makeComment = (element, id) => {
-    fetch("/api/addcomment", {
+    fetch(`${BASE_URL}/api/addcomment`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
