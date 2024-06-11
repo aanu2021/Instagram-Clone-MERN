@@ -9,7 +9,7 @@ const CreatePost = () => {
   const [content, setContent] = useState("Enter a caption...");
   const [image, setImage] = useState();
   const [url, setUrl] = useState("");
-  const BASE_URL = process.env.BASE_URL;
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   const defaultPicLink = 'https://cdn-icons-png.flaticon.com/128/3177/3177440.png';
 

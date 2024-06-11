@@ -11,7 +11,7 @@ const FollowingPage = () => {
   const [show, setShow] = useState(false);
   const [item, setItem] = useState({}); 
   const defaultPicLink = 'https://cdn-icons-png.flaticon.com/128/3177/3177440.png';
-  const BASE_URL = process.env.BASE_URL;
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   const notifyA = (message) => {
     toast.success(message);

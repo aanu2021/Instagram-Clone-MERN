@@ -10,7 +10,7 @@ import { LoginContext } from "../context/LoginContext";
 const Login = () => {
   
   const [credentials, setCredentials] = useState({ email: "", password: "" });
-  const BASE_URL = process.env.BASE_URL;
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   const inputEvent = (event) => {
     const name = event.target.name;

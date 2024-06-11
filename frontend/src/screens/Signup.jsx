@@ -16,7 +16,7 @@ const Signup = () => {
     username: "",
     password: "",
   });
-  const BASE_URL = process.env.BASE_URL;
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   const notifyA = (str) => toast.success(str);
   const notifyB = (str) => toast.error(str);
