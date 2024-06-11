@@ -21,7 +21,7 @@ const App = () => {
     <div className="App">
       <GoogleOAuthProvider clientId="914751995071-333ch7m1495282l7ne9p2hbjgdk7ia4j.apps.googleusercontent.com">;
         <LoginContext.Provider value={{ setUserLogin, setModalOpen, userLogin }}>
-          <BrowserRouter>
+          <BrowserRouter> 
             <Navbar login={userLogin} />
             <Routes>
               <Route path="/" element={<Home />} />

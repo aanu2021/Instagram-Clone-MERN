@@ -145,7 +145,7 @@ const Signup = () => {
               id="email"
               value={credentials.email}
               placeholder="Email   Id"
-              onChange={inputEvent}
+              onChange={inputEvent} 
             />
           </div>
           <div>
@@ -191,15 +191,6 @@ const Signup = () => {
             value="Sign Up"
             onClick={postData}
           />
-          {/* <hr/> */}
-          {/* <GoogleLogin
-            onSuccess={credentialResponse => {
-              continueWithGoogle(credentialResponse);
-            }}
-            onError={() => {
-              console.log('Login Failed');
-            }}
-          /> */}
         </div>
         <div className="form2">
           Already have an account ?

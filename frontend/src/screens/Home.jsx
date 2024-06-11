@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react"; 
 import "../styles/Home.css";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
@@ -11,9 +11,6 @@ const Home = () => {
   const [show, setShow] = useState(false);
   const [item, setItem] = useState({});
   const BASE_URL = import.meta.BASE_URL;
-
-  let limit = 5;
-  let skip = 0;
 
   const defaultPicLink = 'https://cdn-icons-png.flaticon.com/128/3177/3177440.png';
 
@@ -29,14 +26,8 @@ const Home = () => {
     }
 
     fetchPosts();
-
-    // window.addEventListener("scroll", handleScroll);
-
-    // return () => {
-    //   window.removeEventListener("scroll", handleScroll);
-    // }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, []); 
 
 
   const fetchPosts = () => {
@@ -53,13 +44,6 @@ const Home = () => {
       })
       .catch((err) => console.log(err));
   }
-
-  // const handleScroll = () => {
-  //   if (document.documentElement.clientHeight + window.pageYOffset >= document.documentElement.scrollHeight - 20) {
-  //     skip = skip + 5
-  //     fetchPosts()
-  //   }
-  // }
 
   const handleLikePost = (id) => {
     fetch(`${BASE_URL}/api/like`, {

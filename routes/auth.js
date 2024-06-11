@@ -26,9 +26,6 @@ router.post(
       return res.status(432).json({ errors: errors.array() });
     }
 
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(req.body.password, salt);
-
     const { name, username, email, password } = req.body;
     if (!name || !username || !email || !password) {
       return res.status(422).json({ error: "Please add all the fields..." });
@@ -63,9 +60,9 @@ router.post(
 router.post(
   "/login",
   [
-    body("email", "Email is not properly formatted").isEmail(),
+   body("email", "Email is not properly formatted").isEmail(),
     body("password", "Password is too short, choose something strong").isLength(
-      { min: 5 }
+      { min: 5 } 
     ),
   ],
   async (req, res) => {
@@ -112,54 +109,5 @@ router.post(
     }
   }
 );
-
-router.post("/googleLogin", async (req, res) => {
-  try {
-    const { email_verified, email, name, clientId, username, Photo } = req.body;
-    if (email_verified) {
-      const userData = await User.findOne({ email: email });
-      // If the email is already present into our database, then allow sign in to the application.
-      if (userData) {
-        const jwtToken = jwt.sign({ _id: userData.id }, SECRET_KEY);
-        return res
-          .status(200)
-          .json({
-            success: true,
-            username: userData.username,
-            token: jwtToken,
-            user: userData,
-          });
-      }
-      // Enter the user with his email + password for the first time
-      else {
-        const password = email + clientId;
-        const user = new User({
-          name: name,
-          username: username,
-          email: email,
-          password: password,
-          Photo: Photo
-        });
-        await user.save();
-        const jwtToken = jwt.sign({ _id: user.id }, SECRET_KEY);
-        return res
-          .status(200)
-          .json({
-            success: true,
-            username: user.username,
-            token: jwtToken,
-            user: user,
-          });
-      }
-    }
-    else{ 
-       return res.status(400).json({success : false, message : "Email not verified by google"});
-    }
-  }
-  catch (error) {
-    console.log(error);
-    res.status(400).json({ success: false });
-  }
-})
 
 module.exports = router;
